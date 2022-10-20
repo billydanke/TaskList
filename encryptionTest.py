@@ -13,20 +13,6 @@ f = Fernet(key)
 
 print("key: " + key.decode())
 
-print("\nCurrent Data:")
-print("---------------------------------")
-
-with open("data.txt",'r') as file:
-    for line in file:
-        token = line
-        try:
-            decryptedMessage = f.decrypt(token).decode()
-            print(decryptedMessage + '\n')
-        except:
-            print("--Hidden--\n")
-
-print("---------------------------------\n")
-
 message = input("Enter Message: ").encode()
 token = f.encrypt(message)
 
