@@ -12,11 +12,13 @@ def passwordAuthenticate(password):
     key = base64.urlsafe_b64encode(kdf.derive(password))
     f = Fernet(key)
 
-    checkSource = f.decrypt(checkToken)
+    checkSource = None
+    try:
+        checkSource = f.decrypt(checkToken)
+    except:
+        pass
     
     if(password == checkSource):
-        print("Password matches")
         return True
     else:
-        print("Password invalid.")
         return False
