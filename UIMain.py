@@ -49,21 +49,34 @@ def loginScreen():
 def mainScreen(password):
     mainWindow = tk.Tk()
 
-    mainWindow.resizable(False,False)
+    windowWidth = 600
+    windowHeight = 400
+
+    mainWindow.resizable(False,True)
     mainWindow.title('Task List')
     mainWindow.wm_iconbitmap('logo.ico')
     screenWidth = mainWindow.winfo_screenwidth()
     screenHeight = mainWindow.winfo_screenheight()
-    mainWindow.geometry('%dx%d+%d+%d' % (600,800,screenWidth/2-300,screenHeight/2-400))
+    mainWindow.geometry('%dx%d+%d+%d' % (windowWidth,windowHeight,screenWidth-windowWidth-15,screenHeight-windowHeight-80))
 
     # Main Window Elements
-    frmMain = ttk.Frame(master=mainWindow,width=600,height=800)
-    frmMain.pack_propagate(False)
+    frmHeader = ttk.Frame(master=mainWindow,width=600,height=100)
+    frmMain = ttk.Frame(master=mainWindow,width=600,height=400)
+    frmHeader.pack_propagate(False)
 
-    lblHeader = ttk.Label(master=frmMain, text="Hello, Aaron.",font=('Arial',25)).pack(anchor=tk.NW)
-    separator = tk.Frame(master=frmMain,background='Black',height=1,bd=0).pack(fill='x')
+    lblHeader = ttk.Label(master=frmHeader, text="\nHello, Aaron.",font=('Arial',25))
+    lblHeader.pack(anchor=tk.NW)
+    separator = tk.Frame(master=frmHeader,background='Black',height=1,bd=0)
+    separator.pack(fill='x')
 
-    frmMain.pack(padx=50,pady=50)
+    for i in range(5):
+        for j in range(3):
+            entryTemp = ttk.Entry(master=frmMain)
+            entryTemp.insert(tk.END,"test")
+            entryTemp.grid(row=i,column=j,sticky='ew')
+
+    frmHeader.pack(padx=50)
+    frmMain.pack(padx=50,anchor=tk.NW)
 
     mainWindow.mainloop()
 
