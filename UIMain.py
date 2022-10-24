@@ -25,6 +25,10 @@ def loginScreen():
     screenWidth = loginWindow.winfo_screenwidth()
     screenHeight = loginWindow.winfo_screenheight()
     loginWindow.geometry('%dx%d+%d+%d' % (250,150,screenWidth/2-125,screenHeight/2-75))
+    
+    style = ttk.Style(loginWindow)
+    loginWindow.tk.call('source', 'azure dark 2/azure dark 3.tcl')
+    style.theme_use('azure')
 
     # Login Window Elements
     frmLogin = ttk.Frame(master=loginWindow,width=250,height=150,border=10)
@@ -60,6 +64,10 @@ def mainScreen(password):
     screenHeight = mainWindow.winfo_screenheight()
     mainWindow.geometry('%dx%d+%d+%d' % (windowWidth,windowHeight,screenWidth-windowWidth-15,screenHeight-windowHeight-80))
 
+    style = ttk.Style(mainWindow)
+    mainWindow.tk.call('source', 'azure dark 2/azure dark 3.tcl')
+    style.theme_use('azure')
+
     # Main Window Elements
     frmHeader = ttk.Frame(master=mainWindow,width=600,height=90)
     frmMain = ttk.Frame(master=mainWindow,width=600,height=400)
@@ -94,7 +102,7 @@ def mainScreen(password):
             lblContent = tk.Label(master=frmMain,text="content",height=2,borderwidth=1,relief=tk.GROOVE)
             lblContent.grid(row=_row,column=col,sticky='ew')
         
-        btnEdit = ttk.Button(master=frmMain,text="edit",image=editImage,)
+        btnEdit = ttk.Button(master=frmMain,text="edit",image=editImage)
         btnEdit.grid(row=_row,column=3,sticky='ew')
 
     scrollbar = ttk.Scrollbar(master=mainWindow,orient=tk.VERTICAL)
